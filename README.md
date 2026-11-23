@@ -1,2 +1,36 @@
-# spotify-knowledge-graph
-RDF knowledge graph and SHACL profile for the Almost a Million Spotify Tracks dataset.
+# Spotify Knowledge Graph
+
+## Project description
+
+This project develops an RDF knowledge graph based on the
+[Almost a Million Spotify Tracks dataset](https://zenodo.org/records/11453410).
+
+The objective is to transform the original tabular dataset into
+a structured, interoperable and machine-readable RDF representation.
+
+## Data model
+
+The conceptual model includes the following classes:
+
+- Track
+- Artist
+- Album
+- Genre
+- ChartEntry
+- Market
+
+The model reuses established vocabularies and ontologies,
+including the Music Ontology, Dublin Core, FOAF and RDF Schema,
+and introduces a custom vocabulary for Spotify-specific concepts.
+
+## Project resources
+
+- Ontology: under development
+- SHACL validation shapes: under development
+- RDF conversion pipeline: under development
+
+## Source dataset
+
+Almost a Million Spotify Tracks.
+
+Zenodo: https://zenodo.org/records/11453410
