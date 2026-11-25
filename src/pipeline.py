@@ -191,10 +191,19 @@ def parse_multi_value(raw: Any) -> List[str]:
 def parse_int(raw: Any, issues: logging.Logger, row_id: str, col: str) -> Optional[int]:
     if is_missing(raw):
         return None
+
     try:
-        return int(float(str(raw).strip()))
-    except ValueError:
-        issues.warning(f"track={row_id} | col={col} | Invalid integer value: {raw!r}")
+        value = Decimal(str(raw).strip())
+
+        if not value.is_finite() or value != value.to_integral_value():
+            raise InvalidOperation()
+
+        return int(value)
+
+    except (InvalidOperation, ValueError):
+        issues.warning(
+            f"track={row_id} | col={col} | Invalid integer value: {raw!r}"
+        )
         return None
 
 

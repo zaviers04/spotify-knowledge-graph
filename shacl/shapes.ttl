@@ -40,7 +40,9 @@ spotify-sh:DatasetShape
         sh:path dcterms:license ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
-        sh:message "A dataset must declare at least one open licence as an IRI." ;
+        sh:maxCount 1 ;
+        sh:hasValue <https://creativecommons.org/licenses/by/4.0/> ;
+        sh:message "The dataset must declare the CC BY 4.0 licence." ;
     ] ;
     sh:property [
         sh:path dcterms:issued ;
@@ -130,8 +132,10 @@ spotify-sh:TrackShape
     sh:property [
         sh:path spotify:energy ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:energy must be at most one xsd:decimal." ;
+        sh:message "spotify:energy must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:mode ;
@@ -150,38 +154,50 @@ spotify-sh:TrackShape
     sh:property [
         sh:path spotify:speechiness ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:speechiness must be at most one xsd:decimal." ;
+        sh:message "spotify:speechiness must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:danceability ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:danceability must be at most one xsd:decimal." ;
+        sh:message "spotify:danceability must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:valence ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:valence must be at most one xsd:decimal." ;
+        sh:message "spotify:valence must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:acousticness ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:acousticness must be at most one xsd:decimal." ;
+        sh:message "spotify:acousticness must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:liveness ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:liveness must be at most one xsd:decimal." ;
+        sh:message "spotify:liveness must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:instrumentalness ;
         sh:datatype xsd:decimal ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
         sh:maxCount 1 ;
-        sh:message "spotify:instrumentalness must be at most one xsd:decimal." ;
+        sh:message "spotify:instrumentalness must be a decimal between 0 and 1." ;
     ] ;
     sh:property [
         sh:path spotify:loudness ;
@@ -309,6 +325,13 @@ spotify-sh:GenreShape
 spotify-sh:ChartEntryShape
     a sh:NodeShape ;
     sh:targetClass spotify:ChartEntry ;
+    sh:or (
+        [ sh:property [ sh:path spotify:chartName ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path spotify:rank ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path spotify:chartRegion ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path spotify:positionChange ; sh:minCount 1 ] ]
+        [ sh:property [ sh:path spotify:trend ; sh:minCount 1 ] ]
+    ) ; #this is just to prevent empty entries
     sh:property [
         sh:path spotify:chartName ;
         sh:datatype xsd:string ;
