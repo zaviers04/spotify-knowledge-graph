@@ -1,0 +1,351 @@
+@prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:        <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:         <http://www.w3.org/ns/shacl#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix mo:         <http://purl.org/ontology/mo/> .
+@prefix spotify:    <https://w3id.org/spotify-kg/ontology#> .
+@prefix spotify-sh: <https://w3id.org/spotify-kg/shapes#> .
+
+<https://w3id.org/spotify-kg/shapes>
+    a owl:Ontology ;
+    owl:imports <https://w3id.org/spotify-kg/ontology> ;
+    dcterms:title "Spotify Knowledge Graph SHACL Application Profile"@en ;
+    dcterms:description "Machine-checkable SHACL shapes encoding the Linked Data Application Profile (LDAP) for the Spotify Tracks Knowledge Graph."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
+
+#################################################################
+# 1. Dataset Metadata Shape (dcat:Dataset)
+#################################################################
+
+spotify-sh:DatasetShape
+    a sh:NodeShape ;
+    sh:targetClass dcat:Dataset ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "A dataset must have exactly one title (xsd:string)." ;
+    ] ;
+    sh:property [
+        sh:path dcterms:creator ;
+        sh:nodeKind sh:IRI ;
+        sh:message "Dataset creators must be identified by an IRI (foaf:Agent)." ;
+    ] ;
+    sh:property [
+        sh:path dcterms:license ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:message "A dataset must declare at least one open licence as an IRI." ;
+    ] ;
+    sh:property [
+        sh:path dcterms:issued ;
+        sh:datatype xsd:date ;
+        sh:maxCount 1 ;
+        sh:message "Dataset publication date must be at most one xsd:date literal." ;
+    ] .
+
+#################################################################
+# 2. Track Shape (mo:Track)
+#################################################################
+
+spotify-sh:TrackShape
+    a sh:NodeShape ;
+    sh:targetClass mo:Track ;
+
+    # --- Core Identifiers & Descriptive Metadata ---
+    sh:property [
+        sh:path dcterms:identifier ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each mo:Track must have exactly one Spotify track_id (xsd:string)." ;
+    ] ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:message "Track title (dcterms:title) must be at most one xsd:string." ;
+    ] ;
+    sh:property [
+        sh:path spotify:streams ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:streams must be at most one non-negative xsd:integer." ;
+    ] ;
+    sh:property [
+        sh:path spotify:explicit ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1 ;
+        sh:message "spotify:explicit must be at most one xsd:boolean." ;
+    ] ;
+    sh:property [
+        sh:path spotify:addedAt ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        sh:message "spotify:addedAt must be at most one xsd:dateTime." ;
+    ] ;
+    sh:property [
+        sh:path spotify:popularity ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:popularity must be an xsd:integer between 0 and 100." ;
+    ] ;
+    sh:property [
+        sh:path mo:duration ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxCount 1 ;
+        sh:message "mo:duration must be at most one non-negative xsd:integer (milliseconds)." ;
+    ] ;
+    sh:property [
+        sh:path mo:track_number ;
+        sh:datatype xsd:nonNegativeInteger ;
+        sh:maxCount 1 ;
+        sh:message "mo:track_number must be at most one xsd:nonNegativeInteger." ;
+    ] ;
+
+    # --- Spotify Audio Features ---
+    sh:property [
+        sh:path spotify:tempo ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:tempo must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:key ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive -1 ;
+        sh:maxInclusive 11 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:key must be an xsd:integer between -1 and 11." ;
+    ] ;
+    sh:property [
+        sh:path spotify:energy ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:energy must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:mode ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 1 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:mode must be 0 or 1 (xsd:integer)." ;
+    ] ;
+    sh:property [
+        sh:path spotify:timeSignature ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:message "spotify:timeSignature must be at most one xsd:integer." ;
+    ] ;
+    sh:property [
+        sh:path spotify:speechiness ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:speechiness must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:danceability ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:danceability must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:valence ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:valence must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:acousticness ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:acousticness must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:liveness ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:liveness must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:instrumentalness ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:instrumentalness must be at most one xsd:decimal." ;
+    ] ;
+    sh:property [
+        sh:path spotify:loudness ;
+        sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:message "spotify:loudness must be at most one xsd:decimal." ;
+    ] ;
+
+    # --- Object Properties (Relationships from mo:Track) ---
+    sh:property [
+        sh:path spotify:creditedArtist ;
+        sh:nodeKind sh:IRI ;
+        sh:class mo:MusicArtist ;
+        sh:message "spotify:creditedArtist must reference an IRI typed as mo:MusicArtist." ;
+    ] ;
+    sh:property [
+        sh:path mo:genre ;
+        sh:nodeKind sh:IRI ;
+        sh:class mo:Genre ;
+        sh:message "mo:genre must reference an IRI typed as mo:Genre." ;
+    ] ;
+    sh:property [
+        sh:path spotify:hasChartEntry ;
+        sh:nodeKind sh:IRI ;
+        sh:class spotify:ChartEntry ;
+        sh:message "spotify:hasChartEntry must reference an IRI typed as spotify:ChartEntry." ;
+    ] ;
+    sh:property [
+        sh:path spotify:availableIn ;
+        sh:nodeKind sh:IRI ;
+        sh:class spotify:Market ;
+        sh:message "spotify:availableIn must reference an IRI typed as spotify:Market." ;
+    ] .
+
+#################################################################
+# 3. Artist Shape (mo:MusicArtist)
+#################################################################
+
+spotify-sh:ArtistShape
+    a sh:NodeShape ;
+    sh:targetClass mo:MusicArtist ;
+    sh:property [
+        sh:path foaf:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each mo:MusicArtist must have at least one foaf:name (xsd:string)." ;
+    ] ;
+    sh:property [
+        sh:path spotify:artistFollowers ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:artistFollowers must be at most one non-negative xsd:integer." ;
+    ] ;
+    sh:property [
+        sh:path spotify:artistPopularity ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxInclusive 100 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:artistPopularity must be an xsd:integer between 0 and 100." ;
+    ] .
+
+#################################################################
+# 4. Album Shape (mo:Record)
+#################################################################
+
+spotify-sh:AlbumShape
+    a sh:NodeShape ;
+    sh:targetClass mo:Record ;
+    sh:property [
+        sh:path dcterms:title ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:message "Album title (dcterms:title) must be at most one xsd:string." ;
+    ] ;
+    sh:property [
+        sh:path mo:track_count ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 0 ;
+        sh:maxCount 1 ;
+        sh:message "mo:track_count must be at most one non-negative xsd:integer." ;
+    ] ;
+    sh:property [
+        sh:path dcterms:issued ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:gYearMonth ]
+            [ sh:datatype xsd:gYear ]
+        ) ;
+        sh:message "dcterms:issued on mo:Record must be xsd:date, xsd:gYearMonth, or xsd:gYear." ;
+    ] ;
+    sh:property [
+        sh:path mo:release_type ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:message "mo:release_type must be at most one IRI (e.g., mo:album, mo:single, mo:compilation)." ;
+    ] ;
+    sh:property [
+        sh:path mo:track ;
+        sh:nodeKind sh:IRI ;
+        sh:class mo:Track ;
+        sh:message "mo:track must link an album (mo:Record) to an IRI typed as mo:Track." ;
+    ] .
+
+#################################################################
+# 5. Genre Shape (mo:Genre)
+#################################################################
+
+spotify-sh:GenreShape
+    a sh:NodeShape ;
+    sh:targetClass mo:Genre ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:message "Each mo:Genre must have at least one rdfs:label (xsd:string)." ;
+    ] .
+
+#################################################################
+# 6. ChartEntry Shape (spotify:ChartEntry)
+#################################################################
+
+spotify-sh:ChartEntryShape
+    a sh:NodeShape ;
+    sh:targetClass spotify:ChartEntry ;
+    sh:property [
+        sh:path spotify:chartName ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:message "spotify:chartName must be at most one xsd:string." ;
+    ] ;
+    sh:property [
+        sh:path spotify:rank ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:maxCount 1 ;
+        sh:message "spotify:rank must be at most one positive xsd:integer." ;
+    ] ;
+    sh:property [
+        sh:path spotify:chartRegion ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:message "spotify:chartRegion must be at most one xsd:string." ;
+    ] ;
+    sh:property [
+        sh:path spotify:positionChange ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:message "spotify:positionChange must be at most one xsd:integer." ;
+    ] .
+
+#################################################################
+# 7. Market Shape (spotify:Market)
+#################################################################
+
+spotify-sh:MarketShape
+    a sh:NodeShape ;
+    sh:targetClass spotify:Market ;
+    sh:property [
+        sh:path spotify:marketCode ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each spotify:Market must have exactly one spotify:marketCode (xsd:string)." ;
+    ] .

@@ -25,12 +25,23 @@ and introduces a custom vocabulary for Spotify-specific concepts.
 
 ## Project resources
 
-- Ontology: under development
-- SHACL validation shapes: under development
-- RDF conversion pipeline: under development
+- Ontology: [`ontology/spotify.ttl`](ontology/spotify.ttl)
+- SHACL validation shapes: [`shacl/shapes.ttl`](shacl/shapes.ttl)
+- RDF conversion pipeline: [`src/pipeline.py`](src/pipeline.py)
+
+## Quickstart
+
+```bash
+pip install -r requirements.txt
+python src/pipeline.py --input data/tracks.csv --output data/spotify_kg.nt
+```
 
 ## Source dataset
 
 Almost a Million Spotify Tracks.
 
 Zenodo: https://zenodo.org/records/11453410
+
+## License
+
+Licensed under [CC BY 4.0](LICENSE).

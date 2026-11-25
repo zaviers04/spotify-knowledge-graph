@@ -14,8 +14,7 @@ complemented by a custom Spotify vocabulary.
 
 ## Validation
 
-A SHACL profile will define the structural and datatype
-constraints of the RDF representation.
+A machine-checkable SHACL profile in [`shacl/shapes.ttl`](../shacl/shapes.ttl) defines the structural and datatype constraints of the RDF representation, enforced automatically by [`src/pipeline.py`](../src/pipeline.py).
 
 ## Source
 
