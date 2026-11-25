@@ -6,9 +6,9 @@
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 @prefix mo:      <http://purl.org/ontology/mo/> .
 @prefix afv:     <http://purl.org/ontology/af/> .
-@prefix spotify: <https://w3id.org/spotify-kg/ontology#> .
+@prefix spotify: <https://w3id.org/spotify-kg-meic/ontology#> .
 
-<https://w3id.org/spotify-kg/ontology>
+<https://w3id.org/spotify-kg-meic/ontology>
     a owl:Ontology ;
     dcterms:title "Spotify Knowledge Graph Vocabulary"@en ;
     dcterms:description "Custom RDFS/OWL vocabulary defining Spotify-specific classes and properties not covered by Music Ontology (mo:), Dublin Core (dcterms:), or FOAF."@en ;
@@ -24,14 +24,14 @@ spotify:ChartEntry
     rdfs:subClassOf rdfs:Resource ;
     rdfs:label "Chart Entry"@en ;
     rdfs:comment "Represents a track's entry in a particular chart, including its chart name, position, region and position change."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:Market
     a owl:Class ;
     rdfs:subClassOf dcterms:Location ;
     rdfs:label "Spotify Market"@en ;
     rdfs:comment "Represents a Spotify availability market, corresponding to a country code in the dataset."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 #################################################################
 # Object Properties
@@ -43,7 +43,7 @@ spotify:creditedArtist
     rdfs:range mo:MusicArtist ;
     rdfs:label "credited artist"@en ;
     rdfs:comment "Associates a track with an artist credited as its author."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:hasChartEntry
     a owl:ObjectProperty ;
@@ -51,7 +51,7 @@ spotify:hasChartEntry
     rdfs:range spotify:ChartEntry ;
     rdfs:label "has chart entry"@en ;
     rdfs:comment "Associates a track with one of its chart entries."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:availableIn
     a owl:ObjectProperty ;
@@ -59,7 +59,7 @@ spotify:availableIn
     rdfs:range spotify:Market ;
     rdfs:label "available in"@en ;
     rdfs:comment "Indicates a market in which a track is available."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 #################################################################
 # Datatype Properties — Track (mo:Track)
@@ -71,7 +71,7 @@ spotify:streams
     rdfs:range xsd:integer ;
     rdfs:label "streams"@en ;
     rdfs:comment "Number of times a track has been listened to."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:explicit
     a owl:DatatypeProperty ;
@@ -79,7 +79,7 @@ spotify:explicit
     rdfs:range xsd:boolean ;
     rdfs:label "explicit"@en ;
     rdfs:comment "Indicates whether the track contains explicit lyrics."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:tempo
     a owl:DatatypeProperty ;
@@ -88,7 +88,7 @@ spotify:tempo
     rdfs:label "tempo"@en ;
     rdfs:comment "Spotify-estimated tempo of a track, in beats per minute."@en ;
     skos:relatedMatch afv:Tempo ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:key
     a owl:DatatypeProperty ;
@@ -97,7 +97,7 @@ spotify:key
     rdfs:label "key"@en ;
     rdfs:comment "Spotify-estimated musical key of a track, using Spotify's numerical Pitch Class encoding (-1 if unknown)."@en ;
     skos:relatedMatch afv:Key ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:energy
     a owl:DatatypeProperty ;
@@ -106,7 +106,7 @@ spotify:energy
     rdfs:label "energy"@en ;
     rdfs:comment "Spotify-estimated perceptual energy score of a track (0.0 to 1.0)."@en ;
     skos:relatedMatch afv:Energy ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:addedAt
     a owl:DatatypeProperty ;
@@ -114,7 +114,7 @@ spotify:addedAt
     rdfs:range xsd:dateTime ;
     rdfs:label "added at"@en ;
     rdfs:comment "Timestamp at which the track was added/uploaded, as recorded in the dataset."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:popularity
     a owl:DatatypeProperty ;
@@ -122,7 +122,7 @@ spotify:popularity
     rdfs:range xsd:integer ;
     rdfs:label "popularity"@en ;
     rdfs:comment "Spotify popularity score of a track (0 to 100)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:mode
     a owl:DatatypeProperty ;
@@ -131,7 +131,7 @@ spotify:mode
     rdfs:label "mode"@en ;
     rdfs:comment "Spotify-estimated musical modality of a track (0 = minor, 1 = major)."@en ;
     skos:relatedMatch afv:Mode ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:timeSignature
     a owl:DatatypeProperty ;
@@ -139,7 +139,7 @@ spotify:timeSignature
     rdfs:range xsd:integer ;
     rdfs:label "time signature"@en ;
     rdfs:comment "Spotify-estimated time signature (beats per bar) of a track."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:speechiness
     a owl:DatatypeProperty ;
@@ -147,7 +147,7 @@ spotify:speechiness
     rdfs:range xsd:decimal ;
     rdfs:label "speechiness"@en ;
     rdfs:comment "Spotify-estimated speechiness score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:danceability
     a owl:DatatypeProperty ;
@@ -155,7 +155,7 @@ spotify:danceability
     rdfs:range xsd:decimal ;
     rdfs:label "danceability"@en ;
     rdfs:comment "Spotify-estimated danceability score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:valence
     a owl:DatatypeProperty ;
@@ -163,7 +163,7 @@ spotify:valence
     rdfs:range xsd:decimal ;
     rdfs:label "valence"@en ;
     rdfs:comment "Spotify-estimated musical positiveness (valence) score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:acousticness
     a owl:DatatypeProperty ;
@@ -171,7 +171,7 @@ spotify:acousticness
     rdfs:range xsd:decimal ;
     rdfs:label "acousticness"@en ;
     rdfs:comment "Spotify-estimated acousticness confidence score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:liveness
     a owl:DatatypeProperty ;
@@ -179,7 +179,7 @@ spotify:liveness
     rdfs:range xsd:decimal ;
     rdfs:label "liveness"@en ;
     rdfs:comment "Spotify-estimated liveness probability score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:instrumentalness
     a owl:DatatypeProperty ;
@@ -187,7 +187,7 @@ spotify:instrumentalness
     rdfs:range xsd:decimal ;
     rdfs:label "instrumentalness"@en ;
     rdfs:comment "Spotify-estimated instrumentalness score of a track (0.0 to 1.0)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:loudness
     a owl:DatatypeProperty ;
@@ -196,7 +196,7 @@ spotify:loudness
     rdfs:label "loudness"@en ;
     rdfs:comment "Spotify-estimated overall loudness of a track in decibels (dB)."@en ;
     skos:relatedMatch afv:Loudness ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 #################################################################
 # Datatype Properties — Artist (mo:MusicArtist)
@@ -208,7 +208,7 @@ spotify:artistFollowers
     rdfs:range xsd:integer ;
     rdfs:label "artist followers"@en ;
     rdfs:comment "Number of followers associated with an artist on Spotify."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:artistPopularity
     a owl:DatatypeProperty ;
@@ -216,7 +216,7 @@ spotify:artistPopularity
     rdfs:range xsd:integer ;
     rdfs:label "artist popularity"@en ;
     rdfs:comment "Spotify popularity score of an artist (0 to 100)."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 #################################################################
 # Datatype Properties — ChartEntry (spotify:ChartEntry)
@@ -228,7 +228,7 @@ spotify:chartName
     rdfs:range xsd:string ;
     rdfs:label "chart name"@en ;
     rdfs:comment "Name of the chart associated with a chart entry."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:rank
     a owl:DatatypeProperty ;
@@ -236,7 +236,7 @@ spotify:rank
     rdfs:range xsd:integer ;
     rdfs:label "rank"@en ;
     rdfs:comment "Numerical position of a track within a chart."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:chartRegion
     a owl:DatatypeProperty ;
@@ -244,7 +244,7 @@ spotify:chartRegion
     rdfs:range xsd:string ;
     rdfs:label "chart region"@en ;
     rdfs:comment "Region associated with a chart entry."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 spotify:positionChange
     a owl:DatatypeProperty ;
@@ -252,7 +252,7 @@ spotify:positionChange
     rdfs:range xsd:integer ;
     rdfs:label "position change"@en ;
     rdfs:comment "Numerical change in a track's position within a chart."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .
 
 #################################################################
 # Datatype Properties — Market (spotify:Market)
@@ -264,4 +264,4 @@ spotify:marketCode
     rdfs:range xsd:string ;
     rdfs:label "market code"@en ;
     rdfs:comment "ISO country/market code identifying a Spotify availability market."@en ;
-    rdfs:isDefinedBy <https://w3id.org/spotify-kg/ontology> .
+    rdfs:isDefinedBy <https://w3id.org/spotify-kg-meic/ontology> .

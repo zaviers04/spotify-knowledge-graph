@@ -24,8 +24,8 @@ NS_DCTERMS = "http://purl.org/dc/terms/"
 NS_DCAT = "http://www.w3.org/ns/dcat#"
 NS_FOAF = "http://xmlns.com/foaf/0.1/"
 NS_MO = "http://purl.org/ontology/mo/"
-NS_SPOTIFY = "https://w3id.org/spotify-kg/ontology#"
-NS_RES = "https://w3id.org/spotify-kg/resource/"
+NS_SPOTIFY = "https://w3id.org/spotify-kg-meic/ontology#"
+NS_RES = "https://w3id.org/spotify-kg-meic/resource/"
 NS_WD = "http://www.wikidata.org/entity/"
 
 # XSD Datatype IRIs

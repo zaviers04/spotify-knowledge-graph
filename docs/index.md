@@ -12,9 +12,11 @@ An RDF representation of the Almost a Million Spotify Tracks dataset.
 The project uses existing music and metadata vocabularies,
 complemented by a custom Spotify vocabulary.
 
-## Validation
+## Project resources
 
-A machine-checkable SHACL profile in [`shacl/shapes.ttl`](../shacl/shapes.ttl) defines the structural and datatype constraints of the RDF representation, enforced automatically by [`src/pipeline.py`](../src/pipeline.py).
+- [Ontology](https://github.com/zaviers04/spotify-knowledge-graph/blob/main/ontology/spotify.ttl)
+- [SHACL shapes](https://github.com/zaviers04/spotify-knowledge-graph/blob/main/shacl/shapes.ttl)
+- [Python pipeline](https://github.com/zaviers04/spotify-knowledge-graph/blob/main/src/pipeline.py)
 
 ## Source
 

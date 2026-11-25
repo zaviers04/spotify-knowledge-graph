@@ -7,12 +7,12 @@
 @prefix dcat:       <http://www.w3.org/ns/dcat#> .
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 @prefix mo:         <http://purl.org/ontology/mo/> .
-@prefix spotify:    <https://w3id.org/spotify-kg/ontology#> .
-@prefix spotify-sh: <https://w3id.org/spotify-kg/shapes#> .
+@prefix spotify:    <https://w3id.org/spotify-kg-meic/ontology#> .
+@prefix spotify-sh: <https://w3id.org/spotify-kg-meic/shapes#> .
 
-<https://w3id.org/spotify-kg/shapes>
+<https://w3id.org/spotify-kg-meic/shapes>
     a owl:Ontology ;
-    owl:imports <https://w3id.org/spotify-kg/ontology> ;
+    owl:imports <https://w3id.org/spotify-kg-meic/ontology> ;
     dcterms:title "Spotify Knowledge Graph SHACL Application Profile"@en ;
     dcterms:description "Machine-checkable SHACL shapes encoding the Linked Data Application Profile (LDAP) for the Spotify Tracks Knowledge Graph."@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/> .
